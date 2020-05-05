@@ -142,7 +142,7 @@ class ActionModule(ActionBase):
 
                 # add ansible 'template' vars
                 temp_vars = task_vars.copy()
-                temp_vars.update(generate_ansible_template_vars(source, dest))
+                temp_vars.update(generate_ansible_template_vars(source, dest, temp_vars.get('inventory_dir')))
 
                 old_vars = self._templar.available_variables
                 self._templar.available_variables = temp_vars
